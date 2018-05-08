@@ -29,7 +29,7 @@ import Sort from '../../common/sort';
               source:res[0][j].source,
               thumb:res[0][j].thumb,
               views:res[0][j].views,
-              like:res[0][j].like,
+              likes:res[0][j].likes,
               collect:res[0][j].collect,
               createdAt:res[0][j].createdAt
             })

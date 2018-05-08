@@ -36,6 +36,9 @@ import JudgeLike from '../controllers/phone/judgeLike';
 import JudgeCollect from '../controllers/phone/judgeCollect';
 import DeleteWork from '../controllers/phone/deleteWork';
 import RelationWork from '../controllers/phone/relationWork';
+import CourseList from '../controllers/phone/courseList';
+import LikesList from '../controllers/phone/likesList';
+import WorkNewList from '../controllers/phone/workNewList';
 
 const router = new Router();
 
@@ -102,6 +105,12 @@ router.get('/judgeCollect',JudgeCollect);
 router.post('/deleteWork',DeleteWork);
 
 router.get('/relationWork',RelationWork);
+
+router.get('/courseList',CourseList);
+
+router.get('/likesList',LikesList);
+
+router.get('/workNewList',WorkNewList);
 
 router.post('/uploadAvatar', avatarUpload.single('avatar'), UploadAvatar);  
 
