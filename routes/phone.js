@@ -2,6 +2,7 @@ import Router from 'koa-router';
 
 import avatarUpload from '../common/storage/avatarUpload';
 import fileUpload from '../common/storage/fileUpload';
+import joinUpload from '../common/storage/joinUpload';
 
 import NewUser from '../controllers/phone/newUser';
 import Login from '../controllers/phone/login';
@@ -39,7 +40,13 @@ import RelationWork from '../controllers/phone/relationWork';
 import CourseList from '../controllers/phone/courseList';
 import LikesList from '../controllers/phone/likesList';
 import WorkNewList from '../controllers/phone/workNewList';
-
+import ExhibitionList from '../controllers/phone/exhibitionList';
+import ExhibitionWork from '../controllers/phone/exhibitionWork';
+import MyExhibition from '../controllers/phone/myExhibition';
+import MyExhibitionWork from '../controllers/phone/myExhibitionWork';
+import JoinExhibition from '../controllers/phone/joinExhibition';
+import LikeExhibitionWork from '../controllers/phone/likeExhibitionWork';
+import UploadJoin from '../controllers/phone/uploadJoin';
 const router = new Router();
 
 router.prefix('/phone');
@@ -112,8 +119,22 @@ router.get('/likesList',LikesList);
 
 router.get('/workNewList',WorkNewList);
 
+router.get('/exhibitionList',ExhibitionList);
+
+router.get('/exhibitionWork',ExhibitionWork);
+
+router.get('/myExhibition',MyExhibition);
+
+router.get('/myExhibitionWork',MyExhibitionWork);
+
+router.post('/joinExhibition',JoinExhibition);
+
+router.post('/likeExhibitionWork',LikeExhibitionWork);
+
 router.post('/uploadAvatar', avatarUpload.single('avatar'), UploadAvatar);  
 
 router.post('/uploadFile', fileUpload.single('file'), UploadFile);
+
+router.post('/uploadJoin', joinUpload.single('join'), UploadJoin);
 
 module.exports=router;
