@@ -6,7 +6,7 @@ import {sequelize} from '../../model/index'
     };
     var {userId} = ctx.request.query;
     
-    await sequelize.query("SELECT * FROM art_work WHERE userId=? AND deletedAt is null ORDER BY createdAt DESC",{
+    await sequelize.query("SELECT * FROM art_work WHERE userId=? AND deletedAt is null AND visible=0 ORDER BY createdAt DESC",{
       replacements:[userId]
     }).then(result=>{
       if(result[0].length>0){

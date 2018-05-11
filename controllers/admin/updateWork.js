@@ -4,10 +4,10 @@ import {sequelize} from '../../model/index'
       code:1,
       msg:"更新作品信息失败"
     };
-    var {id,userId,content,type,source,thumb,views,likes,collect} = ctx.request.body;
+    var {id,userId,content,type,source,thumb,views,likes,collect,typeId} = ctx.request.body;
     var updatedDate = new Date();
-    await sequelize.query("UPDATE art_work SET content=?,updatedAt=? WHERE id=?",{
-      replacements:[content,updatedDate,id]
+    await sequelize.query("UPDATE art_work SET content=?,updatedAt=?,typeId=? WHERE id=?",{
+      replacements:[content,updatedDate,typeId,id]
     }).then(result=>{
       if(result[0].affectedRows>0){
         responseData={

@@ -47,6 +47,9 @@ import MyExhibitionWork from '../controllers/phone/myExhibitionWork';
 import JoinExhibition from '../controllers/phone/joinExhibition';
 import LikeExhibitionWork from '../controllers/phone/likeExhibitionWork';
 import UploadJoin from '../controllers/phone/uploadJoin';
+import GetType from '../controllers/phone/getType';
+import MyWork from '../controllers/phone/myWork';
+import WorkTypeList from '../controllers/phone/workTypeList';
 const router = new Router();
 
 router.prefix('/phone');
@@ -130,6 +133,12 @@ router.get('/myExhibitionWork',MyExhibitionWork);
 router.post('/joinExhibition',JoinExhibition);
 
 router.post('/likeExhibitionWork',LikeExhibitionWork);
+
+router.get('/getType',GetType);
+
+router.get('/myWork',MyWork);
+
+router.get('/workTypeList',WorkTypeList);
 
 router.post('/uploadAvatar', avatarUpload.single('avatar'), UploadAvatar);  
 

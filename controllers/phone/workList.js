@@ -7,7 +7,7 @@ import {sequelize} from '../../model/index'
 
     //查询轮播表中所有未删除的轮播项
 
-  await sequelize.query("SELECT user.nickName,user.avatar,art_work.* FROM art_work,user WHERE art_work.userId=user.id AND art_work.deletedAt is null ORDER BY art_work.createdAt DESC").then(result => {
+  await sequelize.query("SELECT user.nickName,user.avatar,art_work.* FROM art_work,user WHERE art_work.userId=user.id AND visible=0 AND art_work.deletedAt is null ORDER BY art_work.createdAt DESC").then(result => {
 
     responseData={
       code:0,

@@ -8,6 +8,7 @@ import { decipher } from '../../common/secret'
 
 
     var {userName,password} = ctx.request.body;
+    console.log(ctx.request.body);
     //解密密码
     password = decipher('aes192','123',password);
     await sequelize.query('SELECT user.id,userName,nickName,avatar,gender,signature FROM user,admin WHERE user.id=admin.userId AND userName=? AND password=? AND user.deletedAt is null',{

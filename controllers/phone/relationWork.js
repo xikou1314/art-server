@@ -15,7 +15,7 @@ import Sort from '../../common/sort';
     })
     if(users.length > 0){
       for(let i=0;i<users.length;i++){
-        await sequelize.query("SELECT art_work.*,user.nickName,user.avatar FROM art_work,user WHERE art_work.userId=user.id AND art_work.userId=? AND art_work.deletedAt is null",{
+        await sequelize.query("SELECT art_work.*,user.nickName,user.avatar FROM art_work,user WHERE visible=0 AND art_work.userId=user.id AND art_work.userId=? AND art_work.deletedAt is null",{
           replacements: [users[i].toUserId]
         }).then(res=>{
           for(var j=0;j<res[0].length;j++){

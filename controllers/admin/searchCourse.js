@@ -4,16 +4,16 @@ import {sequelize} from '../../model/index'
       code:1,
       msg:"搜索教程失败"
     };
-    var {id,type,current,size} = ctx.request.query;
+    var {id,typeName,current,size} = ctx.request.query;
 
     current -=0;
     size -=0;
     var count = 0;
-    await sequelize.query(`SELECT count(*) as count FROM course WHERE (type LIKE "%${type}%" OR id=${id}) AND deletedAt is null`).then(result=>{
+    await sequelize.query(`SELECT count(*) as count FROM course,type WHERE course.typeId=type.id AND (typeName LIKE "%${typeName}%" OR course.id=${id}) AND course.deletedAt is null`).then(result=>{
       count = result[0][0].count
     })
 
-    await sequelize.query(`SELECT id,title,type,thumb,url FROM course WHERE (type LIKE "%${type}%" OR id=${id}) AND deletedAt is null limit ?,?`,{
+    await sequelize.query(`SELECT course.id,title,course.typeId,type.typeName,thumb,url FROM course,type WHERE course.typeId=type.id AND (typeName LIKE "%${typeName}%" OR course.id=${id}) AND course.deletedAt is null limit ?,?`,{
       replacements:[(current-1)*size,size]
     }).then(result=>{
       if(result[0].length>0){

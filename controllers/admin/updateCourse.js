@@ -4,10 +4,10 @@ import {sequelize} from '../../model/index'
       code:1,
       msg:"更新教程信息失败"
     };
-    var {id,title,type,thumb,url} = ctx.request.body;
+    var {id,title,typeId,thumb,url} = ctx.request.body;
     var updatedDate = new Date();
-    await sequelize.query("UPDATE course SET title=?,type=?,thumb=?,url=?,updatedAt=? WHERE id=?",{
-      replacements:[title,type,thumb,url,updatedDate,id]
+    await sequelize.query("UPDATE course SET title=?,typeId=?,thumb=?,url=?,updatedAt=? WHERE id=?",{
+      replacements:[title,typeId,thumb,url,updatedDate,id]
     }).then(result=>{
       if(result[0].affectedRows>0){
         responseData={

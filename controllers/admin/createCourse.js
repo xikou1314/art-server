@@ -5,7 +5,6 @@ import {sequelize} from '../../model/index'
       msg:"创建教程失败"
     };
     var {title,type,thumb,url} = ctx.request.body;
-
     var createdDate = new Date();
     await sequelize.query("INSERT INTO course VALUES(null,?,?,?,?,?,null,null)",{
       replacements: [title,type,thumb,url,createdDate]

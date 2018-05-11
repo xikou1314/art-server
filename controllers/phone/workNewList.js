@@ -11,11 +11,11 @@ import {sequelize} from '../../model/index'
     var count = 0;
     //查询总数
 
-    await sequelize.query("SELECT count(*) as count FROM art_work WHERE deletedAt is null").then(result=>{
+    await sequelize.query("SELECT count(*) as count FROM art_work WHERE visible=0 AND deletedAt is null").then(result=>{
       count = result[0][0].count
     })
   
-    await sequelize.query('SELECT id,userId,content,type,source,thumb,views,likes,collect,createdAt FROM art_work WHERE deletedAt is null ORDER BY createdAt DESC limit ?,?',{
+    await sequelize.query('SELECT id,userId,content,type,source,thumb,views,likes,collect,createdAt FROM art_work WHERE visible=0 AND deletedAt is null ORDER BY createdAt DESC limit ?,?',{
       replacements:[(current-1)*size,size]
     }).then(result=>{
       if(result[0].length>0){

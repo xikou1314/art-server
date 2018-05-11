@@ -12,8 +12,8 @@ export default {
   port: 3000,
   db: {
     dialect:'mysql',
-    username: 'vv',
-    password: '123456',
+    username: 'yh',
+    password: '1234',
     database: 'art_museum',
     host:'localhost',
     port:3306

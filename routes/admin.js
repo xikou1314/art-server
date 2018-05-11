@@ -31,6 +31,12 @@ import UpdateCourse from '../controllers/admin/updateCourse';
 import SearchCourse from '../controllers/admin/searchCourse';
 import DeleteCourse from '../controllers/admin/deleteCourse';
 import UpdatePwd from '../controllers/admin/updatePwd';
+import GetType from '../controllers/admin/getType';
+import CarouselList from '../controllers/admin/carouselList';
+import UpdateCarousel from '../controllers/admin/updateCarousel';
+import CreateCarousel from '../controllers/admin/createCarousel';
+import DeleteCarousel from '../controllers/admin/deleteCarousel';
+import SearchCarousel from '../controllers/admin/searchCarousel';
 const router = new Router();
 
 const multer = require('koa-multer');//加载koa-multer模块  
@@ -98,6 +104,18 @@ router.get('/searchCourse',SearchCourse);
 router.post('/deleteCourse',DeleteCourse);
 
 router.post('/updatePwd',UpdatePwd);
+
+router.get('/getType',GetType);
+
+router.get('/carouselList',CarouselList);
+
+router.post('/updateCarousel',UpdateCarousel);
+
+router.post('/createCarousel',CreateCarousel);
+
+router.post('/deleteCarousel',DeleteCarousel);
+
+router.get('/searchCarousel',SearchCarousel);
 
 router.post('/uploadPoster', posterUpload.single('poster'), UploadPoster);
 

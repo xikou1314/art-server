@@ -4,19 +4,21 @@ import {sequelize} from '../../model/index'
       code:1,
       msg:"查询教程列表失败"
     };
-    var {current,size} = ctx.request.query;
+    var {current,size,typeId} = ctx.request.query;
     //做分页
     current-=0;
     size-=0;
     var count = 0;
     //查询总数
 
-    await sequelize.query("SELECT count(*) as count FROM course WHERE deletedAt is null").then(result=>{
+    await sequelize.query("SELECT count(*) as count FROM course WHERE typeId=? AND deletedAt is null",{
+      replacements:[typeId]
+    }).then(result=>{
       count = result[0][0].count
     })
   
-    await sequelize.query('SELECT id,title,type,thumb,url FROM course WHERE deletedAt is null limit ?,?',{
-      replacements:[(current-1)*size,size]
+    await sequelize.query('SELECT course.id,title,course.typeId,type.typeName,thumb,url FROM course,type WHERE course.typeId=type.id AND course.typeId=? AND course.deletedAt is null limit ?,?',{
+      replacements:[typeId,(current-1)*size,size]
     }).then(result=>{
       if(result[0].length>0){
         responseData={

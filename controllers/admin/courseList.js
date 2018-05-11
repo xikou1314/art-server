@@ -15,7 +15,7 @@ import {sequelize} from '../../model/index'
       count = result[0][0].count
     })
   
-    await sequelize.query('SELECT id,title,type,thumb,url FROM course WHERE deletedAt is null limit ?,?',{
+    await sequelize.query('SELECT course.id,title,course.typeId,type.typeName,thumb,url FROM course,type WHERE course.typeId=type.id AND course.deletedAt is null ORDER BY course.id limit ?,?',{
       replacements:[(current-1)*size,size]
     }).then(result=>{
       if(result[0].length>0){
