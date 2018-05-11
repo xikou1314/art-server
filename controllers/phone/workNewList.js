@@ -15,7 +15,7 @@ import {sequelize} from '../../model/index'
       count = result[0][0].count
     })
   
-    await sequelize.query('SELECT id,userId,content,type,source,thumb,views,likes,collect,createdAt FROM art_work WHERE deletedAt is null ORDER BY createdAt limit ?,?',{
+    await sequelize.query('SELECT id,userId,content,type,source,thumb,views,likes,collect,createdAt FROM art_work WHERE deletedAt is null ORDER BY createdAt DESC limit ?,?',{
       replacements:[(current-1)*size,size]
     }).then(result=>{
       if(result[0].length>0){

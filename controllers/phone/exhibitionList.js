@@ -24,22 +24,25 @@ export default async (ctx, next) => {
         //moment(end).format('YYYY-MM-DD')
 
         if (result[0].length > 0) {
+            let data = {'now': [], 'past': []}
             for(var i=0;i < result[0].length; i++) {
                 if(moment(result[0][i].end)<today) {
                     result[0][i].past = true;
+                    data.past.push(result[0][i])
                 } else {
                     result[0][i].past = false;
+                    data.now.push(result[0][i])
                 }
-                list.push(result[0][i]);
             }
-                responseData={
-                    code:0,
-                    msg:"查询画展列表成功",
-                    count,
-                    current,
-                    size,
-                    list:result[0]
-                };
+            list.push(result[0]);
+            responseData={
+                code:0,
+                msg:"查询画展列表成功",
+                count,
+                current,
+                size,
+                list:data
+            };
         }
     })
 
