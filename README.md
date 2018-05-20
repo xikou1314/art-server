@@ -4,7 +4,7 @@
   抽空帮别人做的一个vue的项目，后端采用Koa,主要是密码的加密和解密，采用Node自由的crypto库进行实现 
   
   ``` javascript
-    import crypto from 'crypto'  
+  import crypto from 'crypto'  
     export function cipher (algorithm, key, buf) {
     var encrypted = ''
     var cip = crypto.createCipher(algorithm, key)
