@@ -1,7 +1,7 @@
 # art-server
 少儿美术馆Node服务端
 ## 说明
-  抽空帮别人做的一个vue的项目，后端采用Koa,主要是密码的加密和解密，采用Node自由的crypto库进行实现 
+  抽空帮别人做的一个vue的项目，后端采用Koa,主要是密码的加密和解密，采用Node自有的crypto库进行实现 
   
   ``` javascript
   import crypto from 'crypto'  
